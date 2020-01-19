@@ -14,6 +14,11 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
+import Fab from "@material-ui/core/Fab"
+
+import {ReactComponent as GoogleIcon} from "./assets/icons/goggle-icon.svg";
+import {ReactComponent as AmazonIcon} from "./assets/icons/amazon-icon.svg";
+import FacebookIcon from '@material-ui/icons/Facebook';
 
 // TODO Finish Login
 
@@ -57,12 +62,9 @@ function Login() {
         <Container fixed>
             <Paper>
                 <TextField
-                    label="With normal TextField"
-                    id="outlined-start-adornment"
+                    label="User Name"
+                    id="outlined-username"
                     className={clsx(classes.margin, classes.textField)}
-                    InputProps={{
-                        startAdornment: <InputAdornment position="start">Kg</InputAdornment>,
-                    }}
                     variant="outlined"
                 />
                 <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
@@ -87,6 +89,22 @@ function Login() {
                         labelWidth={70}
                     />
                 </FormControl>
+                <Fab variant={"extended"}>
+                    <AmazonIcon
+                        width={"20px"}
+                        height={"auto"}
+                    /> Log in with Amazon
+                </Fab>
+                <Fab variant={"extended"}>
+                    <GoogleIcon
+                        width={"20px"}
+                        height={"auto"}
+                    /> Log in with Google
+                </Fab>
+                <Fab variant={"extended"}>
+                    <FacebookIcon
+                    /> Log in with FaceBook
+                </Fab>
 
             </Paper>
         </Container>
