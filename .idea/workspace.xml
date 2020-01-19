@@ -1,7 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="43edbf97-eff2-4b38-827c-a5567e622d3f" name="Default Changelist" comment="" />
+    <list default="true" id="43edbf97-eff2-4b38-827c-a5567e622d3f" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/sampleText.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Login.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Logout.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/MainWindow.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NavBar.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/NotFound.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/Register.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mainwindow/BackButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mainwindow/BreadCrumbs.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mainwindow/FolderDisplay.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mainwindow/RootButton.jsx" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/components/mainwindow/TextDisplay.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/codertips_frontend.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codertips_frontend.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.test.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.test.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -11,6 +33,12 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="JsFlowSettings">
+    <service-enabled>true</service-enabled>
+    <exe-path />
+    <other-services-enabled>true</other-services-enabled>
+    <auto-save>true</auto-save>
+  </component>
   <component name="ProjectId" id="1WUYhEcJbGLYe4lXn4KZQGSM2zO" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <ConfirmationsSetting value="2" id="Add" />
@@ -19,11 +47,24 @@
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../DjangoReact_NotesAPI/reactnotesfrontend" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.standard" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.standard" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.standard" value="" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="nodejs_package_manager_path" value="yarn" />
-    <property name="settings.editor.selected.configurable" value="com.jetbrains.django.DjangoModulesConfigurable" />
+    <property name="settings.editor.selected.configurable" value="JavaScript.Libraries" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PyCharm 2019.2.2\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\CaducityXTop\PycharmProjects\CoderTips\codertips_frontend\public" />
+    </key>
   </component>
   <component name="RunDashboard">
     <option name="ruleStates">
@@ -62,12 +103,17 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1579205757918</updated>
-      <workItem from="1579205760086" duration="2486000" />
+      <workItem from="1579205760086" duration="11119000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/node_modules/aws-sdk/scripts/services-table-generator.js" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
