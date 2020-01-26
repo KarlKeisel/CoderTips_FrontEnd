@@ -12,6 +12,7 @@ import {LockOpen, ExitToApp, AssignmentTurnedInOutlined} from "@material-ui/icon
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
+        paddingBottom: "10px",
     },
     menuButton: {
         marginRight: theme.spacing(2),
@@ -29,7 +30,7 @@ export default function ButtonAppBar() {
         <div className={classes.root}>
             <AppBar position="static">
                 <Toolbar>
-                    <IconButton edge="start" className={classes.menuButton} color="inherit">
+                    <IconButton edge="start" href={"/"} className={classes.menuButton} color="inherit">
                         <CodeIcon/>
                     </IconButton>
                     <Typography variant="h6" className={classes.title}>
