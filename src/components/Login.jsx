@@ -61,51 +61,62 @@ function Login() {
     return (
         <Container fixed>
             <Paper>
-                <TextField
-                    label="User Name"
-                    id="outlined-username"
-                    className={clsx(classes.margin, classes.textField)}
-                    variant="outlined"
-                />
-                <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
-                    <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
-                    <OutlinedInput
-                        id="outlined-adornment-password"
-                        type={values.showPassword ? 'text' : 'password'}
-                        value={values.password}
-                        onChange={handleChange('password')}
-                        endAdornment={
-                            <InputAdornment position="end">
-                                <IconButton
-                                    aria-label="toggle password visibility"
-                                    onClick={handleClickShowPassword}
-                                    onMouseDown={handleMouseDownPassword}
-                                    edge="end"
-                                >
-                                    {values.showPassword ? <Visibility/> : <VisibilityOff/>}
-                                </IconButton>
-                            </InputAdornment>
-                        }
-                        labelWidth={70}
-                    />
-                </FormControl>
-                <Fab variant={"extended"}>
-                    <AmazonIcon
-                        width={"20px"}
-                        height={"auto"}
-                    /> Log in with Amazon
-                </Fab>
-                <Fab variant={"extended"}>
-                    <GoogleIcon
-                        width={"20px"}
-                        height={"auto"}
-                    /> Log in with Google
-                </Fab>
-                <Fab variant={"extended"}>
-                    <FacebookIcon
-                    /> Log in with FaceBook
-                </Fab>
-
+                <Grid container spacing={3}>
+                    <Grid item md={6}>
+                        <TextField
+                            label="User Name"
+                            id="outlined-username"
+                            className={clsx(classes.margin, classes.textField)}
+                            variant="outlined"
+                        />
+                        <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
+                            <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
+                            <OutlinedInput
+                                id="outlined-adornment-password"
+                                type={values.showPassword ? 'text' : 'password'}
+                                value={values.password}
+                                onChange={handleChange('password')}
+                                endAdornment={
+                                    <InputAdornment position="end">
+                                        <IconButton
+                                            aria-label="toggle password visibility"
+                                            onClick={handleClickShowPassword}
+                                            onMouseDown={handleMouseDownPassword}
+                                            edge="end"
+                                        >
+                                            {values.showPassword ? <Visibility/> : <VisibilityOff/>}
+                                        </IconButton>
+                                    </InputAdornment>
+                                }
+                                labelWidth={70}
+                            />
+                        </FormControl>
+                        <br/>
+                        <small>Don't have an account?
+                            <a href={"/register"}> Register Here </a>
+                        </small>
+                    </Grid>
+                    <Grid item md={6}>
+                        <Fab variant={"extended"}>
+                            <AmazonIcon
+                                width={"25px"}
+                                height={"100%"}
+                            /> Log in with Amazon
+                        </Fab>
+                        <br/>
+                        <Fab variant={"extended"}>
+                            <GoogleIcon
+                                width={"20px"}
+                            /> Log in with Google
+                        </Fab>
+                        <br/>
+                        <Fab variant={"extended"}>
+                            <FacebookIcon
+                            /> Log in with FaceBook
+                        </Fab>
+                        <br/>
+                    </Grid>
+                </Grid>
             </Paper>
         </Container>
     )

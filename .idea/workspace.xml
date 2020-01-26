@@ -2,11 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="43edbf97-eff2-4b38-827c-a5567e622d3f" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/components/assets/icons/goggle-icon.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/components/svg/SvgIcon.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/components/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/Login.jsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/components/NavBar.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/components/NavBar.jsx" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -88,7 +86,8 @@
       <option name="presentableId" value="Default" />
       <updated>1579205757918</updated>
       <workItem from="1579205760086" duration="16705000" />
-      <workItem from="1579470620947" duration="1699000" />
+      <workItem from="1579470620947" duration="2686000" />
+      <workItem from="1579483666167" duration="4308000" />
     </task>
     <servers />
   </component>
