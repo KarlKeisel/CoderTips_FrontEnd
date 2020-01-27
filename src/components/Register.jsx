@@ -32,6 +32,7 @@ function Register() {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         username: '',
+        email: '',
         password1: '',
         password2: '',
         showPassword: false,
@@ -43,7 +44,7 @@ function Register() {
     };
 
     const isSecure = () => {
-        const {password1, password2, username} = values;
+        const {password1, password2, username, email} = values;
         if (password1.length > 7
             && password1.match(/[0-9]+/) != null
             && password1.match(/[$&+,:;=?@#|'<>.\-^*()%!]/) != null
@@ -51,6 +52,7 @@ function Register() {
             && password1.match(/[a-z]/) != null
             && password1 === password2
             && username.length > 2
+            && email.match(/([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})/) != null
         ) {
             return true
         } else {
@@ -64,6 +66,10 @@ function Register() {
 
     const handleMouseDownPassword = event => {
         event.preventDefault();
+    };
+
+    const validEmail = () => {
+        return values.email.length > 0 && values.email.match(/([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})/) == null
     };
 
     return (
@@ -80,6 +86,15 @@ function Register() {
                             onChange={handleChange('username')}
                         />
                         <br/>
+                        <TextField
+                            label="Email"
+                            id={"email"}
+                            className={clsx(classes.margin, classes.textField)}
+                            variant={"outlined"}
+                            onChange={handleChange('email')}
+                            error={validEmail()}
+                            helperText={validEmail() ? "Enter a valid email" : null}
+                        />
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel>Enter Password</InputLabel>
                             <OutlinedInput
@@ -151,7 +166,7 @@ function Register() {
                             Your passwords must match
                         </p>
                         <br/>
-                        <h4>Your password is {isSecure() ? "Secure!" : "Not Secure!"}</h4>
+                        <h4>You are {isSecure() ? "Ready!" : "Not Ready!"}</h4>
                     </Grid>
                 </Grid>
             </Paper>
