@@ -68,6 +68,7 @@ function Login() {
                             id="outlined-username"
                             className={clsx(classes.margin, classes.textField)}
                             variant="outlined"
+                            onChange={handleChange('username')}
                         />
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel htmlFor="outlined-adornment-password">Password</InputLabel>
@@ -91,6 +92,7 @@ function Login() {
                                 labelWidth={70}
                             />
                         </FormControl>
+                        {/*TODO Make Login Button*/}
                         <br/>
                         <small>Don't have an account?
                             <a href={"/register"}> Register Here </a>
