@@ -18,7 +18,7 @@ import Fab from "@material-ui/core/Fab"
 
 import {ReactComponent as GoogleIcon} from "./assets/icons/goggle-icon.svg";
 import {ReactComponent as AmazonIcon} from "./assets/icons/amazon-icon.svg";
-import FacebookIcon from '@material-ui/icons/Facebook';
+import {Facebook, LocationOff} from '@material-ui/icons';
 
 // TODO Finish Login
 
@@ -113,10 +113,14 @@ function Login() {
                         </Fab>
                         <br/>
                         <Fab variant={"extended"}>
-                            <FacebookIcon
+                            <Facebook
                             /> Log in with FaceBook
                         </Fab>
                         <br/>
+                        <Fab variant={"extended"}>
+                            <LocationOff
+                            /> No Login as Guest
+                        </Fab>
                     </Grid>
                 </Grid>
             </Paper>
