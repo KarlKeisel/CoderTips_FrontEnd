@@ -22,10 +22,9 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ButtonAppBar() {
+export default function ButtonAppBar(props) {
     const classes = useStyles();
-    const isAuth = false; // TODO Change with real Auth
-
+    // TODO Fix isAuthenticated tag
     return (
         <div className={classes.root}>
             <AppBar position="static">
@@ -36,10 +35,13 @@ export default function ButtonAppBar() {
                     <Typography variant="h6" className={classes.title}>
                         Welcome to CoderTips!
                     </Typography>
-                    {isAuth
-                        ? <Button color="inherit">
-                            <ExitToApp/> Logout
-                        </Button>
+                    {props.auth.isAuthenticated
+                        ? <>
+                            <p>Welcome User!</p>
+                            <Button color="inherit">
+                                <ExitToApp/> Logout
+                            </Button>
+                        </>
                         : <>
                             <Button color="inherit" href={"/login"}>
                                 <LockOpen/> Login

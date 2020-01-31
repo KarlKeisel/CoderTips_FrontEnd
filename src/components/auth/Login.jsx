@@ -14,11 +14,17 @@ import Paper from "@material-ui/core/Paper";
 import Container from "@material-ui/core/Container";
 import Grid from "@material-ui/core/Grid";
 import Box from "@material-ui/core/Box";
-import Fab from "@material-ui/core/Fab"
+import {Button, Fab} from "@material-ui/core"
+
+import {Auth} from "aws-amplify";
+
+import {withRouter} from "react-router-dom";
 
 import {ReactComponent as GoogleIcon} from "../assets/icons/goggle-icon.svg";
 import {ReactComponent as AmazonIcon} from "../assets/icons/amazon-icon.svg";
 import {Facebook, LocationOff} from '@material-ui/icons';
+
+import FormErrors from "../FormErrors";
 
 // TODO Finish Login
 
@@ -38,13 +44,40 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-function Login() {
+
+function Login(props) {
     const classes = useStyles();
     const [values, setValues] = React.useState({
         username: '',
         password: '',
         showPassword: false,
+        errors: {
+            cognito: null,
+        },
     });
+
+    const clearErrorState = () => {
+        setValues({...values, errors: {cognito: null}})
+    };
+
+    const handleSubmit = async event => {
+        event.preventDefault();
+
+        clearErrorState();
+        try {
+            const user = await Auth.signIn(values.username, values.password);
+            props.auth.setAuthStatus(true);
+            props.auth.setUser(user);
+            console.log(user);
+            props.history.push("/main")
+        } catch (error) {  // Sometimes returned as error, or error.message
+            let err = null;
+            !error.message ? err = {"message": error} : err = error;  // Normalize
+            setValues({
+                ...values, errors: {cognito: err}
+            });
+        }
+    };
 
     const handleChange = prop => event => {
         setValues({...values, [prop]: event.target.value})
@@ -63,6 +96,8 @@ function Login() {
             <Paper>
                 <Grid container spacing={3}>
                     <Grid item md={6}>
+                        <h3>Login Now</h3>
+                        <FormErrors formerrors={values.errors}/>
                         <TextField
                             label="User Name"
                             id="outlined-username"
@@ -92,7 +127,15 @@ function Login() {
                                 labelWidth={70}
                             />
                         </FormControl>
-                        {/*TODO Make Login Button*/}
+                        <br/>
+                        <Button
+                            variant={"contained"}
+                            color={"secondary"}
+                            className={classes.margin}
+                            onClick={handleSubmit}
+                        >
+                            Login
+                        </Button>
                         <br/>
                         <small>Don't have an account?
                             <a href={"/register"}> Register Here </a>
@@ -128,4 +171,4 @@ function Login() {
     )
 }
 
-export default Login
+export default withRouter(Login)

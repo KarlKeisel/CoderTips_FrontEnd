@@ -59,9 +59,7 @@ function Register(props) {
     const handleSubmit = async event => {
         event.preventDefault();
 
-        // Form Validation
         clearErrorState();
-        // AWS Cognito Submit Here
         const {username, email, password} = values;
         try {
             const signUpResponse = await Auth.signUp({
