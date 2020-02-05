@@ -18,7 +18,7 @@ import {Button, Fab} from "@material-ui/core"
 
 import {Auth} from "aws-amplify";
 
-import {withRouter} from "react-router-dom";
+import {BrowserRouter, withRouter} from "react-router-dom";
 
 import {ReactComponent as GoogleIcon} from "../assets/icons/goggle-icon.svg";
 import {ReactComponent as AmazonIcon} from "../assets/icons/amazon-icon.svg";
@@ -66,9 +66,8 @@ function Login(props) {
         clearErrorState();
         try {
             const user = await Auth.signIn(values.username, values.password);
-            props.auth.setAuthStatus(true);
             props.auth.setUser(user);
-            console.log(user);
+            props.auth.setAuthStatus(true);
             props.history.push("/main")
         } catch (error) {  // Sometimes returned as error, or error.message
             let err = null;

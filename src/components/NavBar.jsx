@@ -37,7 +37,9 @@ export default function ButtonAppBar(props) {
                     </Typography>
                     {props.auth.isAuthenticated
                         ? <>
-                            <p>Welcome User!</p>
+                        {props.auth.user.username
+                            ? <p>Welcome {props.auth.user.username}</p>
+                            : <p>Welcome Guest!</p> }
                             <Button color="inherit">
                                 <ExitToApp/> Logout
                             </Button>
