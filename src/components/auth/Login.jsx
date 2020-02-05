@@ -18,7 +18,7 @@ import {Button, Fab} from "@material-ui/core"
 
 import {Auth} from "aws-amplify";
 
-import {BrowserRouter, withRouter} from "react-router-dom";
+import {withRouter} from "react-router-dom";
 
 import {ReactComponent as GoogleIcon} from "../assets/icons/goggle-icon.svg";
 import {ReactComponent as AmazonIcon} from "../assets/icons/amazon-icon.svg";

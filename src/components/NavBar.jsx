@@ -40,7 +40,7 @@ export default function ButtonAppBar(props) {
                         {props.auth.user.username
                             ? <p>Welcome {props.auth.user.username}</p>
                             : <p>Welcome Guest!</p> }
-                            <Button color="inherit">
+                            <Button color="inherit" href={"/logout"}>
                                 <ExitToApp/> Logout
                             </Button>
                         </>
