@@ -13,6 +13,8 @@ import Logout from "./components/auth/Logout";
 import NotFound from "./components/NotFound";
 import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
+import ChangePassword from "./components/auth/ChangePassword";
+import ChangePasswordConfirm from "./components/auth/ChangePasswordConfirm";
 
 function App() {
 
@@ -52,7 +54,7 @@ function App() {
         checkLocalStorage();
     }, []);
 
-    // TODO Create a redirect from '/main' if not logged in
+    // TODO Create a redirect from '/main', '/changepassword' if not logged in
     return (
         !isLoading &&
         <BrowserRouter>
@@ -63,9 +65,11 @@ function App() {
                 <Route exact path={"/"} component={LandingPage}/>
                 <Route exact path={"/main"} render={(props) => <MainWindow {...props} auth={authProps}/>}/>
                 <Route exact path={"/register"} render={(props) => <Register {...props} auth={authProps}/>}/>
-                <Route exact path={"/register/success"} component={RegisterSuccess}/>
+                <Route exact path={"/registersuccess"} component={RegisterSuccess}/>
                 <Route exact path={"/login"} render={(props) => <Login {...props} auth={authProps}/>}/>
                 <Route exact path={"/logout"} render={(props) => <Logout {...props} auth={authProps}/>}/>
+                <Route exact path={"/changepassword"} render={(props) => <ChangePassword {...props} auth={authProps}/>}/>
+                <Route exact path={"/changepasswordconfirm"} component={ChangePasswordConfirm}/>
                 <Route component={NotFound}/>
             </Switch>
             <Footer/>

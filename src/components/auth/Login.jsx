@@ -26,7 +26,8 @@ import {Facebook, LocationOff} from '@material-ui/icons';
 
 import FormErrors from "../FormErrors";
 
-// TODO Finish Login
+// TODO Finish Login Styling
+// TODO Add "Forgot Password" Link
 
 const useStyles = makeStyles(theme => ({
     root: {

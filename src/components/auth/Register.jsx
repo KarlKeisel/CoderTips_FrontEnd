@@ -11,6 +11,8 @@ import {withRouter} from "react-router-dom"
 import {Auth} from "aws-amplify";
 
 import FormErrors from "../FormErrors";
+import {isSecureFull, isEmailProper} from "./helpers/formFunctions";
+import PasswordRequirements from "./helpers/PasswordRequirements";
 
 
 // TODO Finish Register Styling
@@ -25,12 +27,6 @@ const useStyles = makeStyles(theme => ({
     formBox: {
         alignContent: "center",
         textJustify: "center",
-    },
-    secure: {
-        color: "green"
-    },
-    notSecure: {
-        color: "black"
     },
 }));
 
@@ -81,19 +77,7 @@ function Register(props) {
 
     const isSecure = () => {
         const {password, password2, username, email} = values;
-        if (password.length > 7
-            && password.match(/[0-9]+/) != null
-            && password.match(/[$&+,:;=?@#|'<>.\-^*()%!]/) != null
-            && password.match(/[A-Z]/) != null
-            && password.match(/[a-z]/) != null
-            && password === password2
-            && username.length > 2
-            && email.match(/([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})/) != null
-        ) {
-            return true
-        } else {
-            return false
-        }
+        return isSecureFull(password, password2, username, email)
     };
 
     const handleClickShowPassword = () => {
@@ -105,7 +89,7 @@ function Register(props) {
     };
 
     const validEmail = () => {
-        return values.email.length > 0 && values.email.match(/([a-zA-Z0-9_\-.]+)@([a-zA-Z0-9_\-.]+)\.([a-zA-Z]{2,5})/) == null
+        return values.email.length > 0 && !isEmailProper(values.email)
     };
 
     return (
@@ -135,6 +119,7 @@ function Register(props) {
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel>Enter Password</InputLabel>
                             <OutlinedInput
+                                labelWidth={115}
                                 id="password"
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password}
@@ -151,13 +136,13 @@ function Register(props) {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                labelWidth={70}
                             />
                         </FormControl>
                         <br/>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant="outlined">
                             <InputLabel>Reenter Password</InputLabel>
                             <OutlinedInput
+                                labelWidth={130}
                                 id="password2"
                                 type={values.showPassword ? 'text' : 'password'}
                                 value={values.password2}
@@ -174,7 +159,6 @@ function Register(props) {
                                         </IconButton>
                                     </InputAdornment>
                                 }
-                                labelWidth={70}
                             />
                         </FormControl>
                         <br/>
@@ -183,25 +167,7 @@ function Register(props) {
                         </Fab>
                     </Grid>
                     <Grid item md={6}>
-                        <h3>Secure Passwords Are:</h3>
-                        <p className={values.password.length > 7 ? classes.secure : classes.notSecure}>
-                            Minimum of 8 characters
-                        </p>
-                        <p className={values.password.match(/[0-9]+/) != null ? classes.secure : classes.notSecure}>
-                            Have at least one number
-                        </p>
-                        <p className={values.password.match(/[$&+,:;=?@#|'<>.\-^*()%!]/) != null ? classes.secure : classes.notSecure}>
-                            Have at least one special character like ! $ % ( ) *
-                        </p>
-                        <p className={values.password.match(/[A-Z]/) != null ? classes.secure : classes.notSecure}>
-                            Have at least one CAPITAL letter
-                        </p>
-                        <p className={values.password.match(/[a-z]/) != null ? classes.secure : classes.notSecure}>
-                            Have at least one lowercase letter
-                        </p>
-                        <p className={values.password === values.password2 && values.password.length > 7 ? classes.secure : classes.notSecure}>
-                            Your passwords must match
-                        </p>
+                        <PasswordRequirements password={values.password} password2={values.password2}/>
                         <br/>
                         <h4>You are {isSecure() ? "Ready!" : "Not Ready!"}</h4>
                     </Grid>
