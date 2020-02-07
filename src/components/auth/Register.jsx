@@ -6,7 +6,7 @@ import {Visibility, VisibilityOff} from "@material-ui/icons";
 import InputAdornment from "@material-ui/core/InputAdornment";
 import IconButton from "@material-ui/core/IconButton";
 
-import {withRouter} from "react-router-dom"
+import {withRouter} from "react-router-dom";
 
 import {Auth} from "aws-amplify";
 
@@ -169,7 +169,7 @@ function Register(props) {
                     <Grid item md={6}>
                         <PasswordRequirements password={values.password} password2={values.password2}/>
                         <br/>
-                        <h4>You are {isSecure() ? "Ready!" : "Not Ready!"}</h4>
+                        <h4>You are {isSecure() ? "Ready!" : "not Ready!"}</h4>
                     </Grid>
                 </Grid>
             </Paper>

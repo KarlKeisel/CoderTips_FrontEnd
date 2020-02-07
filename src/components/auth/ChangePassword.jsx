@@ -1,15 +1,23 @@
+// Expects user already logged in, redirect before hitting this page.
+// TODO Check if page allowed on OAuth or Guest. Error handle?
+
 import React, {useState} from "react";
 
 import clsx from 'clsx';
-import {InputAdornment, InputLabel, makeStyles, OutlinedInput, FormControl} from "@material-ui/core";
+import {InputAdornment, InputLabel, makeStyles, OutlinedInput, FormControl, Fab} from "@material-ui/core";
 import {Container, Paper, IconButton, Grid} from "@material-ui/core";
 import {Visibility, VisibilityOff} from "@material-ui/icons";
+
 import PasswordRequirements from "./helpers/PasswordRequirements";
 import {isPasswordSecure} from "./helpers/formFunctions";
+import FormErrors from "../FormErrors";
 
+import {withRouter} from "react-router-dom";
+
+import {Auth} from 'aws-amplify';
 
 // TODO Change Password Styling
-// TODO Submit Function
+
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -20,7 +28,7 @@ const useStyles = makeStyles(theme => ({
     },
 }));
 
-export default function ChangePassword() {
+function ChangePassword(props) {
     const classes = useStyles();
 
     const [oldPassword, setOldPassword] = useState('');
@@ -41,10 +49,6 @@ export default function ChangePassword() {
         setShowPassword(!showPassword)
     };
 
-    const handleChange = prop => event => {
-        console.log(event.target.id)
-    };
-
     const handleMouseDownPassword = event => {
         event.preventDefault();
     };
@@ -53,7 +57,23 @@ export default function ChangePassword() {
         event.preventDefault();
 
         clearErrorState();
-        // TODO Try / Catch Logic here
+
+        Auth.currentAuthenticatedUser()
+            .then(user => {
+                return Auth.changePassword(user, oldPassword, newPassword);
+            })
+            .then(data => {
+                console.log(data);
+                props.history.push("/changepasswordconfirm")
+            })
+            .catch(error => {
+                let err = null;
+                !error.message ? err = {"message": error} : err = error; // Normalize
+                setErrors({
+                    ...errors, errors: {cognito: err}
+                })
+            });
+
     };
 
     return (
@@ -62,7 +82,10 @@ export default function ChangePassword() {
                 <Grid container spacing={3}>
                     <Grid item md={6}>
                         <h3>Change Password</h3>
-                        <p>Don't like your old password? Lets change it up!</p>
+                        {errors.errors.cognito === null
+                            ? <p> Don't like your old password? Lets change it up!</p>
+                            : <FormErrors formerrors={errors.errors}/>
+                        }
                         <br/>
                         <FormControl className={clsx(classes.margin, classes.textField)} variant={"outlined"}>
                             <InputLabel>Enter Current Password</InputLabel>
@@ -130,14 +153,23 @@ export default function ChangePassword() {
                                 }
                             />
                         </FormControl>
+                        <Fab
+                            variant={"extended"}
+                            disabled={!isPasswordSecure(newPassword, confirmNewPassword) && oldPassword.length > 6}
+                            onClick={handleSubmit}
+                        >
+                            Change Password
+                        </Fab>
                     </Grid>
                     <Grid item md={6}>
                         <PasswordRequirements password={newPassword} password2={confirmNewPassword}/>
                         <br/>
-                        <h4>You are {isPasswordSecure(newPassword, confirmNewPassword) ? "Ready!" : "Not Ready!"}</h4>
+                        <h4>You are {isPasswordSecure(newPassword, confirmNewPassword) ? "Ready!" : "not Ready!"}</h4>
                     </Grid>
                 </Grid>
             </Paper>
         </Container>
-)
+    )
 }
+
+export default withRouter(ChangePassword)
