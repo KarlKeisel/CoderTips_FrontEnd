@@ -15,6 +15,8 @@ import LandingPage from "./components/LandingPage";
 import Footer from "./components/Footer";
 import ChangePassword from "./components/auth/ChangePassword";
 import ChangePasswordConfirm from "./components/auth/ChangePasswordConfirm";
+import ForgotPassword from "./components/auth/ForgotPassword";
+import ForgotPasswordVerification from "./components/auth/ForgotPasswordVerification";
 
 function App() {
 
@@ -70,6 +72,8 @@ function App() {
                 <Route exact path={"/logout"} render={(props) => <Logout {...props} auth={authProps}/>}/>
                 <Route exact path={"/changepassword"} render={(props) => <ChangePassword {...props} auth={authProps}/>}/>
                 <Route exact path={"/changepasswordconfirm"} component={ChangePasswordConfirm}/>
+                <Route exact path={"/forgotpassword"} component={ForgotPassword}/>
+                <Route exact path={"/forgotpasswordverification"} component={ForgotPasswordVerification}/>
                 <Route component={NotFound}/>
             </Switch>
             <Footer/>
