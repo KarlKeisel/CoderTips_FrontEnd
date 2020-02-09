@@ -140,6 +140,10 @@ function Login(props) {
                         <small>Don't have an account?
                             <a href={"/register"}> Register Here </a>
                         </small>
+                        <br/>
+                        <small>
+                            <a href={"/forgotpassword"}> Forgot your password? </a>
+                        </small>
                     </Grid>
                     <Grid item md={6}>
                         <Fab variant={"extended"}>
