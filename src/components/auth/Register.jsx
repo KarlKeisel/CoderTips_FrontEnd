@@ -16,6 +16,7 @@ import PasswordRequirements from "./helpers/PasswordRequirements";
 
 
 // TODO Finish Register Styling
+// TODO Should use .trim() on username?
 
 const useStyles = makeStyles(theme => ({
     textField: {
@@ -56,7 +57,10 @@ function Register(props) {
         event.preventDefault();
 
         clearErrorState();
-        const {username, email, password} = values;
+        const username = values.username.toLowerCase();
+        const email = values.email.toLowerCase();
+        const {password} = values;
+
         try {
             const signUpResponse = await Auth.signUp({
                 username,
@@ -65,7 +69,7 @@ function Register(props) {
                     email: email
                 }
             });
-            props.history.push("/register/success")
+            props.history.push("/registersuccess")
         } catch (error) {  // Sometimes returned as error, or error.message
             let err = null;
             !error.message ? err = {"message": error} : err = error;  // Normalize

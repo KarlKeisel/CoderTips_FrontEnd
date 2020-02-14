@@ -66,7 +66,7 @@ function Login(props) {
 
         clearErrorState();
         try {
-            const user = await Auth.signIn(values.username, values.password);
+            const user = await Auth.signIn(values.username.toLowerCase(), values.password);
             props.auth.setUser(user);
             props.auth.setAuthStatus(true);
             props.history.push("/main")
@@ -146,20 +146,29 @@ function Login(props) {
                         </small>
                     </Grid>
                     <Grid item md={6}>
-                        <Fab variant={"extended"}>
+                        <Fab
+                            variant={"extended"}
+                            onClick={() => Auth.federatedSignIn({provider: "LoginWithAmazon"})}
+                        >
                             <AmazonIcon
                                 width={"25px"}
                                 height={"100%"}
                             /> Log in with Amazon
                         </Fab>
                         <br/>
-                        <Fab variant={"extended"}>
+                        <Fab
+                            variant={"extended"}
+                            onClick={() => Auth.federatedSignIn({provider: "Google"})}
+                        >
                             <GoogleIcon
                                 width={"20px"}
                             /> Log in with Google
                         </Fab>
                         <br/>
-                        <Fab variant={"extended"}>
+                        <Fab
+                            variant={"extended"}
+                            onClick={() => Auth.federatedSignIn({provider: "Facebook"})}
+                        >
                             <Facebook
                             /> Log in with FaceBook
                         </Fab>

@@ -9,6 +9,12 @@ import IconButton from '@material-ui/core/IconButton';
 import CodeIcon from '@material-ui/icons/Code';
 import {LockOpen, ExitToApp, AssignmentTurnedInOutlined} from "@material-ui/icons";
 
+// TODO Finish styling Navbar
+
+const upperUserName = (user) => {
+    return user.charAt(0).toUpperCase() + user.slice(1)
+};
+
 const useStyles = makeStyles(theme => ({
     root: {
         flexGrow: 1,
@@ -38,7 +44,7 @@ export default function ButtonAppBar(props) {
                     {props.auth.isAuthenticated
                         ? <>
                         {props.auth.user.username
-                            ? <p>Welcome {props.auth.user.username}</p>
+                            ? <p>Welcome {upperUserName(props.auth.user.username)}</p>
                             : <p>Welcome Guest!</p> }
                             <Button color="inherit" href={"/logout"}>
                                 <ExitToApp/> Logout
